@@ -1,7 +1,9 @@
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
+
 import java.awt.event.ActionListener;
 import java.awt.BorderLayout;
 
@@ -12,8 +14,10 @@ public class Calculator
     private JFrame calcFrame;
     private JTextField leftOperand;
     private JTextField rightOperand;
-
+    private jlResults = new JLabel("Results = " + sum);
     public JFrame getcalcFrame()
+    private int sum = 0;
+    
     {
         return calcFrame;
     }
@@ -23,14 +27,14 @@ public class Calculator
         JFrame   calculatorFrame;
         calculatorFrame = new JFrame();
         calculatorFrame.setLocation(100,100);
-        calculatorFrame.setSize(200,400);
+        calculatorFrame.setSize(400,400);
         calculatorFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         calculatorFrame.setTitle("Basic Calculator");
 
         initializeComponents();  //Create and add all components
         calculatorFrame.setVisible(true);
     }
-    public void initializeComponents();
+    public void initializeComponents()
     {
         Calculator.add(calcNorth(), BorderLayout.PAGE_START);
         Calculator.add(calcCenter(), BorderLayout.CENTER);
@@ -48,18 +52,22 @@ public class Calculator
     }
     private JPanel calcCenter()
     {
-        JButton addButton = new JButton("+");
-        JButton subButton = new JButton("-");
-        JButton multButton = new JButton("*");
-        JButton divButton = new JButton("/");
-        JButton calcTotal = new JButton("=");
-        
+        JPanel calcCenter = new JPanel();
+        calcCenter.add(jlResults);
+    }
+    private JPanel calcSouth()
+    {
+        JButton addButton = new JButton("ADD");
+        JButton subButton = new JButton("SUB");
+        JButton multButton = new JButton("MULT");
+        JButton divButton = new JButton("DIV");
+                
         JPanel calcCenter = new JPanel();
         calcCenter.add(addButton);
         calcCenter.add(subButton);
         calcCenter.add(multButton);
         calcCenter.add(divButton);
-        calcCenter.add(calcTotal);
+        
     }
     
     public void updateClicked()
